@@ -100,10 +100,12 @@ def gen_gif_no_10(token_id=10, raw=render_list[4][2]):
     gif_frames[0].save(gif_path, save_all=True, append_images=gif_frames[1:], loop=0, duration=150)
     print(gif_path)
 
+# render gif
 for (token_id, mode, raw) in render_list:
     if mode == 'mask':
         gen_gif_mask(token_id, raw)
     elif mode == 'mouth':
         gen_gif_mouth(token_id, raw)
 
+# render gif (custom)
 gen_gif_no_10()
