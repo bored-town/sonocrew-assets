@@ -15,7 +15,7 @@ render_list = [
     (4, 'mask', [ 'deathgang.jpg', 'huntergang.png', ('blackanimate', 4), 'pierce-tounge.png', None, 'ghost.png', None ]),
     (6, 'mouth', [ 'killgang.jpg', 'biggang.png', 'goldmask.png', ('ani-laugh', 11), 'mask.png', None, None ]),
     (9, 'mask', [ 'bloodgang.jpg', 'birdnestblue.png', ('blackanimate', 4), 'money.png', 'tattoo.png', None, None ]),
-    (10, '****', [ 'Hebisnake.jpg', 'GalsGangblue.png', ('blackani', 6), 'flower.png', None, None, None ]),
+    (10, 'custom', [ ('Hebisnake', 12), 'GalsGangblue.png', ('blackani', 6), 'flower.png', None, None, None ]),
     (11, 'mask', [ 'firegang.jpg', 'Galsgang.png', ('firemaskani', 6), 'yummy.png', 'heart.png', None, None ]),
     (14, 'mask', [ 'prettygang.jpg', 'catear.png', ('firemaskani', 6), 'sharp teeth.png', 'star.png', None, None ]),
     (17, 'mask', [ 'beatgang.jpg', 'prettygang.png', ('blackani', 6), 'pierce-mouth.png', None, None, None ]),
