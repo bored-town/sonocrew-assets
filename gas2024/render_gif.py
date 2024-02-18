@@ -65,8 +65,45 @@ def gen_gif(token_id, raw, raw_idx, ord_idx):
     gif_frames[0].save(gif_path, save_all=True, append_images=gif_frames[1:], loop=0, duration=150)
     print(gif_path)
 
+def gen_gif_no_10(token_id=10, raw=render_list[4][2]):
+
+    # prepare info
+    gif_frames = []
+    time = 12 # frames
+    char = dict(zip(header, raw))
+
+    for frame_no in range(1, time+1):
+        body_path = '../traits/body/Hebisnake/{:02}.jpg'.format(frame_no)
+        mask_path = '../traits/mask/blackani/{:02}.png'.format(frame_no)
+
+        # craft frame
+        new_img = Image.new("RGBA", (2000, 2000), "white")
+        for (i, t) in enumerate(trait_order):
+            if char[t] is None:
+                continue
+
+            trait_path = '../traits/{}/{}'.format(t, char[t])
+            if i == 0:
+                trait_path = body_path
+            elif i == 2:
+                trait_path = mask_path
+            layer = Image.open(trait_path)
+
+            if layer.mode != "RGBA":
+                layer = layer.convert("RGBA")
+            new_img = Image.alpha_composite(new_img, layer)
+
+        gif_frames.append(new_img)
+
+    # save gif
+    gif_path = out_path.format(token_id)
+    gif_frames[0].save(gif_path, save_all=True, append_images=gif_frames[1:], loop=0, duration=150)
+    print(gif_path)
+
 for (token_id, mode, raw) in render_list:
     if mode == 'mask':
         gen_gif_mask(token_id, raw)
     elif mode == 'mouth':
         gen_gif_mouth(token_id, raw)
+
+gen_gif_no_10()
