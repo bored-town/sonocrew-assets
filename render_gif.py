@@ -21,6 +21,9 @@ def gen_gif_mouth(token_id, raw):
 def gen_gif_pet(token_id, raw):
     gen_gif(token_id, raw, 5, 6)
 
+def gen_gif_front_distance(token_id, raw):
+    gen_gif(token_id, raw, 6, 5)
+
 def gen_gif(token_id, raw, raw_idx, ord_idx):
 
     # prepare info
@@ -59,6 +62,8 @@ def gen_gif_from_list(render_list):
             gen_gif_mouth(token_id, raw)
         elif mode == 'pet':
             gen_gif_pet(token_id, raw)
+        elif mode == 'front-distance':
+            gen_gif_front_distance(token_id, raw)
 
 def calc_gif_frame(current_frame, max_frame):
     mod = current_frame % max_frame

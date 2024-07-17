@@ -12,6 +12,9 @@ raw = [ line.strip().split(',')[3:] for line in open(src_path, 'r') ][1:]
 # craft to chars
 chars = []
 for r in raw:
+    if len(r) != 7:
+        print('skip row', r)
+        continue
     o = {}
     for (i, h) in enumerate(header):
         v = r[i] or None
