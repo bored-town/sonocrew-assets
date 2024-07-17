@@ -1,8 +1,6 @@
 from pprint import pprint as pp
 from PIL import Image
 
-out_path  = './out/{}.gif'
-
 header = [ 'body', 'head', 'mask', 'mouth', 'accessorie', 'pet', 'front-distance' ]
 trait_order = [ 'body', 'head', 'mask', 'accessorie', 'mouth', 'front-distance', 'pet' ]
 
@@ -12,19 +10,19 @@ def load_img(src):
         img = img.convert("RGBA")
     return img
 
-def gen_gif_mask(token_id, raw):
-    gen_gif(token_id, raw, 2, 2)
+def gen_gif_mask(token_id, raw, out_path):
+    gen_gif(token_id, raw, 2, 2, out_path)
 
-def gen_gif_mouth(token_id, raw):
-    gen_gif(token_id, raw, 3, 4)
+def gen_gif_mouth(token_id, raw, out_path):
+    gen_gif(token_id, raw, 3, 4, out_path)
 
-def gen_gif_pet(token_id, raw):
-    gen_gif(token_id, raw, 5, 6)
+def gen_gif_pet(token_id, raw, out_path):
+    gen_gif(token_id, raw, 5, 6, out_path)
 
-def gen_gif_front_distance(token_id, raw):
-    gen_gif(token_id, raw, 6, 5)
+def gen_gif_front_distance(token_id, raw, out_path):
+    gen_gif(token_id, raw, 6, 5, out_path)
 
-def gen_gif(token_id, raw, raw_idx, ord_idx):
+def gen_gif(token_id, raw, raw_idx, ord_idx, out_path):
 
     # prepare info
     gif_frames = []
@@ -54,16 +52,16 @@ def gen_gif(token_id, raw, raw_idx, ord_idx):
     gif_frames[0].save(gif_path, save_all=True, append_images=gif_frames[1:], loop=0, duration=150)
     print(gif_path)
 
-def gen_gif_from_list(render_list):
+def gen_gif_from_list(render_list, out_path):
     for (token_id, mode, raw) in render_list:
         if mode == 'mask':
-            gen_gif_mask(token_id, raw)
+            gen_gif_mask(token_id, raw, out_path)
         elif mode == 'mouth':
-            gen_gif_mouth(token_id, raw)
+            gen_gif_mouth(token_id, raw, out_path)
         elif mode == 'pet':
-            gen_gif_pet(token_id, raw)
+            gen_gif_pet(token_id, raw, out_path)
         elif mode == 'front-distance':
-            gen_gif_front_distance(token_id, raw)
+            gen_gif_front_distance(token_id, raw, out_path)
 
 def calc_gif_frame(current_frame, max_frame):
     mod = current_frame % max_frame

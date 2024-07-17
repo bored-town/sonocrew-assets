@@ -11,7 +11,7 @@ render_list = [
     (13, 'pet',   [ 'swimwarmflower.jpg', 'coconuthead.png', 'leaf_g.png', 'smile_g.png', None, ('SeaGull', 4), None ]),
 ]
 
-def gen_gif_no_8(token_id=8, raw=render_list[2][2]):
+def gen_gif_no_8(out_path, token_id=8, raw=render_list[2][2]):
 
     # prepare info
     gif_frames = []
@@ -46,8 +46,11 @@ def gen_gif_no_8(token_id=8, raw=render_list[2][2]):
     gif_frames[0].save(gif_path, save_all=True, append_images=gif_frames[1:], loop=0, duration=150)
     print(gif_path)
 
+# specific output
+out_path = sys.argv[1] + '/{}.gif'
+
 # render gif
-gen_gif_from_list(render_list)
+gen_gif_from_list(render_list, out_path)
 
 # render gif (custom)
-gen_gif_no_8()
+gen_gif_no_8(out_path)

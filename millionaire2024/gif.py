@@ -13,4 +13,5 @@ render_list = [
 ]
 
 # render gif
-gen_gif_from_list(render_list)
+out_path = sys.argv[1] + '/{}.gif'
+gen_gif_from_list(render_list, out_path)
